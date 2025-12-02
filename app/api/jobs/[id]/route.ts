@@ -15,7 +15,7 @@ export async function PATCH(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const session = await getServerSession(authOptions);
-  const userId = session?.user?.id as string;
+  const userId = (session?.user as any)?.id as string;
 
   if (!userId) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -64,7 +64,7 @@ export async function PATCH(
       return NextResponse.json({ error: "Job not found" }, { status: 404 });
     }
 
-    const data: any = {};
+    const data: Record<string, any> = {};
     if (company !== undefined) data.company = company;
     if (role !== undefined) data.role = role;
     if (url !== undefined) data.url = url || null;
@@ -103,7 +103,7 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const session = await getServerSession(authOptions);
-  const userId = session?.user?.id as string;
+  const userId = (session?.user as any)?.id as string;
 
   if (!userId) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
