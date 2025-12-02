@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+/* Base layout */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  background-color: #020617; /* slate-950 */
+  color: #e5e7eb; /* slate-200 */
+}
+
+/* Optional: tidy scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1f2937;
+  border-radius: 9999px;
+}
+
+/* Remove old glassy classes if you want */
+.glass-card,
+.glass-card-hover,
+.btn-primary,
+.skeleton {
+  /* no-op: we don't rely on these anymore */
+}
